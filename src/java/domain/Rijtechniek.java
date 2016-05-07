@@ -1,22 +1,42 @@
 package domain;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  *
  * @author jens
  */
+@Entity
 public class Rijtechniek {
-    private KnopUitgebreid parkeren;
-    private KnopUitgebreid keren;
-    private KnopUitgebreid garage;
-    private KnopUitgebreid achteruit;
-    private KnopUitgebreid stuurOef;
     
+    @Id @GeneratedValue
+    private int id;
+    @Embedded
+    private KnopUitgebreid parkeren;
+    @Embedded
+    private KnopUitgebreid keren;
+    @Embedded
+    private KnopUitgebreid garage;
+    @Embedded
+    private KnopUitgebreid achteruit;
+    @Embedded
+    private KnopUitgebreid stuurOef;
+    @Embedded
     private KnopUitgebreid kijk;
+    @Embedded
     private KnopUitgebreid aanzettenHelling;
+    @Embedded
     private KnopUitgebreid schakel;
+    @Embedded
     private KnopUitgebreid stuurtechniek;
+    @Embedded
     private KnopUitgebreid rem;
+    @Embedded
     private KnopUitgebreid koppeling;
+    @Embedded
     private KnopUitgebreid zithouding;
 
     public Rijtechniek() {
@@ -33,6 +53,23 @@ public class Rijtechniek {
         this.rem = new KnopUitgebreid();
         this.koppeling = new KnopUitgebreid();
         this.zithouding = new KnopUitgebreid();
+    }
+    
+    public Rijtechniek(Rijtechniek r) {
+        this.parkeren = new KnopUitgebreid(r.getParkeren());
+        this.keren = new KnopUitgebreid(r.getKeren());
+        this.garage = new KnopUitgebreid(r.getGarage());
+        this.achteruit = new KnopUitgebreid(r.getAchteruit());
+        this.stuurOef = new KnopUitgebreid(r.getStuurOef());
+        
+        this.aanzettenHelling = new KnopUitgebreid(r.getAanzettenHelling());
+        this.kijk = new KnopUitgebreid(r.getKijk());
+        this.schakel = new KnopUitgebreid(r.getSchakel());
+        this.stuurtechniek = new KnopUitgebreid(r.getStuurtechniek());
+        this.rem = new KnopUitgebreid(r.getRem());
+        this.koppeling = new KnopUitgebreid(r.getKoppeling());
+        this.zithouding = new KnopUitgebreid(r.getZithouding());
+
     }
 
     public KnopUitgebreid getAanzettenHelling() {

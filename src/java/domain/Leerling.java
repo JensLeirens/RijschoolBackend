@@ -4,20 +4,31 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.image.Image;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
-
+@Entity
 public class Leerling {
+    
+    @Id
     private String nummer; 
+    
     private String naam;
     private String email ; 
     private String geboorteDatum ; 
     private Image afbeelding; 
     
+    @OneToOne
     private Verkeerstechniek VT; 
+    @OneToOne
     private Rijtechniek RT;
+    @OneToOne
     private Hoofdscherm hoofdscherm;
-    private List<String> attitude; 
+    @ManyToOne
     private List<Evaluatie> evaluaties; 
+    private List<String> attitude; 
     private List<String> opmerkingen;
 
   

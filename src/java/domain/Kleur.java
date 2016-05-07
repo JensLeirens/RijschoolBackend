@@ -11,9 +11,6 @@ package domain;
  */
 public enum Kleur {
     WHITE,RED,ORANGE,GREEN
-    
-    
-    
-    
+  
 }
 

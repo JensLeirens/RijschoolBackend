@@ -5,23 +5,39 @@
  */
 package domain;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  *
  * @author Jorit
  */
+@Entity
 public class Hoofdscherm {
+    @Id @GeneratedValue
+    private int id;
     
+    @Embedded
     private KnopUitgebreid banden;
+    @Embedded
     private KnopUitgebreid vloeistof;
+    @Embedded
     private KnopUitgebreid schakelaar;
-    
+    @Embedded
     private KnopUitgebreid rotonde;
+    @Embedded
     private KnopUitgebreid rijBaanMetRijstroken;
+    @Embedded
     private KnopUitgebreid stad;
+    @Embedded
     private KnopUitgebreid autoSnelweg;
-    
+    @Embedded
     private KnopUitgebreid tanken;
+    @Embedded
     private KnopUitgebreid gps;
+    @Embedded
     private KnopUitgebreid stop;
     private double evolutie;
 
@@ -39,6 +55,23 @@ public class Hoofdscherm {
         gps = new KnopUitgebreid();
         stop = new KnopUitgebreid();
         evolutie = 0;
+    }
+    
+    public Hoofdscherm(Hoofdscherm h){
+        rotonde = new KnopUitgebreid(h.getRotonde());
+        banden = new KnopUitgebreid(h.getBanden());
+        vloeistof = new KnopUitgebreid(h.getVloeistof());
+        schakelaar = new KnopUitgebreid(h.getSchakelaar());
+        
+        rotonde = new KnopUitgebreid(h.getRotonde());
+        rijBaanMetRijstroken = new KnopUitgebreid(h.getRijBaanMetRijstroken());
+        stad = new KnopUitgebreid(h.getStad());
+        autoSnelweg = new KnopUitgebreid(h.getAutoSnelweg());
+        
+        tanken = new KnopUitgebreid(h.getTanken());
+        gps = new KnopUitgebreid(h.getGps());
+        stop = new KnopUitgebreid(h.getStop());
+        evolutie = h.getEvolutie();
     }
     
     public KnopUitgebreid getBanden() {
