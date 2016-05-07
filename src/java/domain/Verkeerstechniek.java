@@ -1,17 +1,33 @@
 package domain;
 
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class Verkeerstechniek {
-    
+    @Id @GeneratedValue
+    private int id;
+    @Embedded
     private KnopUitgebreid aanwijzers;
+    @Embedded
     private KnopUitgebreid rechtsaf;
+    @Embedded
     private KnopUitgebreid openbareWeg;
+    @Embedded
     private KnopUitgebreid voorrang;
+    @Embedded
     private KnopUitgebreid tekens;
+    @Embedded
     private KnopUitgebreid snelheid;
+    @Embedded
     private KnopUitgebreid afstanden;
+    @Embedded
     private KnopUitgebreid inhalen;
+    @Embedded
     private KnopUitgebreid kruisen;
+    @Embedded
     private KnopUitgebreid linksaf;
 
     public Verkeerstechniek() {
@@ -25,6 +41,20 @@ public class Verkeerstechniek {
         this.inhalen = new KnopUitgebreid();
         this.kruisen = new KnopUitgebreid();
         this.linksaf = new KnopUitgebreid();
+    }
+    
+    public Verkeerstechniek(Verkeerstechniek v){
+        this.aanwijzers = new KnopUitgebreid(v.getAanwijzers());
+        this.rechtsaf = new KnopUitgebreid(v.getRechtsaf());
+        this.openbareWeg = new KnopUitgebreid(v.getOpenbareWeg());
+        this.voorrang = new KnopUitgebreid(v.getVoorrang());
+        this.tekens = new KnopUitgebreid(v.getTekens());
+        this.snelheid = new KnopUitgebreid(v.getSnelheid());
+        this.afstanden = new KnopUitgebreid(v.getAfstanden());
+        this.inhalen = new KnopUitgebreid(v.getInhalen());
+        this.kruisen = new KnopUitgebreid(v.getKruisen());
+        this.linksaf = new KnopUitgebreid(v.getLinksaf());
+
     }
 
     public KnopUitgebreid getAanwijzers() {
