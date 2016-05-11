@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -19,6 +20,9 @@ public class Evaluatie {
     private List<String> attitude;
     @Id
     private int nummer;
+    
+    @ManyToOne(targetEntity = Leerling.class)
+    private Leerling leerling ; 
     
 
     public Evaluatie(Verkeerstechniek VT, Rijtechniek RT, Hoofdscherm hoofdscherm, List<String> attitude, int nummer) {
