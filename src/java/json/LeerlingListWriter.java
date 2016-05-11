@@ -70,10 +70,20 @@ public class LeerlingListWriter implements MessageBodyWriter<List<Leerling>>
             if (lln.getHoofdscherm()!= null) {
                 jsonUser.add("hoofdscherm", (JsonObjectBuilder) lln.getHoofdscherm());
             }
-            
-            if (lln.getVT()!= null) {
-                jsonUser.add("VT", (JsonObjectBuilder) lln.getVT());
+           
+            if (lln.getEvaluaties()!= null) {
+                jsonUser.add("evaluaties", (JsonObjectBuilder) lln.getEvaluaties());
             }
+            
+            if (lln.getAttitude()!= null) {
+                jsonUser.add("attitude", (JsonObjectBuilder) lln.getAttitude());
+            }
+            
+            if (lln.getOpmerkingen()!= null) {
+                jsonUser.add("opmerkingen", (JsonObjectBuilder) lln.getOpmerkingen());
+            }
+            
+            
             
             jsonUsers.add(jsonUser);
         }

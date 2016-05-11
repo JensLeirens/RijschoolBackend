@@ -69,7 +69,7 @@ public class Leerlingen {
         leerling.setnaam(leerling.getnaam().trim());
         
         if (em.find(Leerling.class, leerling.getnaam()) != null) {
-            throw new BadRequestException("Username al in gebruik");
+            throw new BadRequestException("naam al in gebruik");
         }
         
         // zelfde al hierboven  
