@@ -7,9 +7,17 @@ import javafx.scene.image.Image;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "TBL_Leerling")
+@NamedQueries({
+    @NamedQuery(name = "Leerling.findAll", query = "SELECT l FROM Leerling l")
+})
 public class Leerling {
     
     @Id
@@ -18,16 +26,20 @@ public class Leerling {
     private String naam;
     private String email ; 
     private String geboorteDatum ; 
-    private Image afbeelding; 
+   // private Image afbeelding; 
     
     @OneToOne
     private Verkeerstechniek VT; 
+    
     @OneToOne
     private Rijtechniek RT;
+    
     @OneToOne
     private Hoofdscherm hoofdscherm;
-    @ManyToOne
+    
+    @OneToMany
     private List<Evaluatie> evaluaties; 
+    
     private List<String> attitude; 
     private List<String> opmerkingen;
 
@@ -45,6 +57,10 @@ public class Leerling {
         evaluaties = new ArrayList<>();
         attitude = new ArrayList<>();
         opmerkingen = new ArrayList<>();
+    }
+
+    public void setNummer(String nummer) {
+        this.nummer = nummer;
     }
 
     public String getNummer() {
@@ -79,13 +95,13 @@ public class Leerling {
         return evaluaties;
     }
     
-    public Image getAfbeelding() {
-        return afbeelding;
-    }
-
-    public void setAfbeelding(Image afbeelding) {
-        this.afbeelding = afbeelding;
-    }
+//    public Image getAfbeelding() {
+//        return afbeelding;
+//    }
+//
+//    public void setAfbeelding(Image afbeelding) {
+//        this.afbeelding = afbeelding;
+//    }
 
     public Hoofdscherm getHoofdscherm() {
         return hoofdscherm;
